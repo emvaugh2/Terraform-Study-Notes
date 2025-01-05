@@ -10,11 +10,37 @@
 
 * Hashicorp Certified Terraform Associate (Chapter 5 - )
 
+
+Chapter 8 - Terraform CLI
+
+
+
+________________
+Chapter 7 - Built-In Functions and Dynamic Blocks
+
+You can not create your own user-defined functions in Terraform. You can only use the built-in functions. All these functions are listed on the Terraform website. 
+
+I'm going to come back to the notes of this. Went over primative and complex variable types and how a collection is a group of one primative variable type and a structure is a group of multiple primative variable types. The dynamic block in a Terraform file also works as a for loop so you don't have to keep having the same type of blocks repeated over and over. It just makes your code cleaner. You can just define the information in a separate variable file and call upon it (invoke?) in your dynamic block. Also, primative variables were intergers, strings, and bools. 
+
+Lab 1 - Using Terraform Dynamic Blocks and Built-in Functions to Deploy to AWS
+
+We pretty much used a few built-in functions and a dynamic block for deploying about 11 AWS resources. I think the coolest thing here is the instructor made a script to start the Apache server on the AWS VM instance. Very simple script to download and install HTTPD. Then start it up. Terraform was able to pass this file to the instance and then execute it automatically. I didn't know we could do that. More so, where is this...oh I guess the script file was already on server that was deploying Terraform commands. I'm assuming Terraform will scan the local system for the file, pass it to the new instance, and then the instance can run the script. 
+
+I actually also really like the output variables. I'll definitely be using these. I'll have to see how to use provisioners and things since we can also use Terraform for Docker and Kubernetes. I wonder how you differentiate exactly when to use it. I'm still new. Anyway, interesting lab. 
+
+
+________________
 Chapter 6 - Terraform Modules
 
 A Terraform module is just a place where you can group together all of your resources. 
 
 ![Image](TerraformCodeSnippet4.png)
+
+I'm not going to say this is advanced for me but what I will say is, my knowledge of Terraform is too basic level for me to truly understand why this is useful right now. 
+
+Lab 1 - Building and Testing a Basic Terraform Module
+
+So we creatd a module to reference in our main.tf file for another Terraform build. Now, I'm not sure why we created two builds but it seems like the first one was strictly creating the module package. I see why this could be important. If some resources and information are going to stay the same no matter what the next Terraform build is going to be, then you can create a module file to reference the resources from. 
 
 ________________
 Chapter 5 - Terraform State
