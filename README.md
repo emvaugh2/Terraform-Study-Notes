@@ -10,9 +10,20 @@
 
 * Hashicorp Certified Terraform Associate (Chapter 5 - )
 
+Chapter 6 - Terraform Modules
+
+A Terraform module is just a place where you can group together all of your resources. 
+
+![Image](TerraformCodeSnippet4.png)
+
+________________
 Chapter 5 - Terraform State
 
+Terraform saves your state file locally by default. You can also have it stored remotely. This is good for collaboration reasons. 
 
+Lab 1 - Exploring Terraform State Functionality
+
+Did learn a lot from this lab besides viewing the Terraform state file contents. We did a deployment but that was about it. I need to actually focus on creating Terraform files from scratch. 
 
 
 ## 01.04.2025
