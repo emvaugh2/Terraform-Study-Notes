@@ -81,4 +81,10 @@ My question here is, I feel like Terraform had to apply the `setup.tf` file firs
 I asked Chat GPT and basically Terraform looks at all `.tf` files and determines which resources require which dependencies. It then creates a map for which resources to deploy first so that everything can be deployed. So it looked at both the `setup.tf` and `main.tf` files and figured the `setup.tf` resources were needed before it could do anything with the `main.tf` instructions. That is really amazing!
 
 
+________________
+
+Chapter 5 - Terraform State
+
+The Terraform state command is a utility for manipulating and reading the Terraform State file. It's for advanced statement management. The sub commands are terraform state list, rm, and show. 
+
 
