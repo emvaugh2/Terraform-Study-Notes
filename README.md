@@ -3,38 +3,58 @@
 
 **Greetings! So I'm finally done with my Docker studies. I'm going to focus on Terraform next because there just isn't a ton of resources on A Cloud Guru for it. So I think it will be quick. I'm going to be focusing on Python and Azure projects after that for quite some time. So once again, I'll be publicly documenting my notes. You definitely need Infrastructure as Code (IaC) for cloud and DevOps practices so lets get the cloud-agnostic tool ready to go.**
 
-## 01.07.2025
-
-**Today's Topics**
-
-* Hashicorp Certified Terraform Associate (Chapter 5 - )
-
-
-Chapter 8 - Terraform CLI
 
 
 ## 01.06.2025
 
 **Today's Topics**
 
-* Hashicorp Certified Terraform Associate (Chapter 5 - )
+* Hashicorp Certified Terraform Associate (Chapter 9)
 
 
-Chapter 8 - Terraform CLI
+Chapter 9 - Terraform Cloud and Enterprise
 
+Hashicorp Sentinel is policy as a code. It enforces policies on your code. It has it's own language - Sentinel language. It can standardize testing and automation within the code. 
 
+Use Terraform vault provider to manage secrets such as passwords and connection string rotation. You should definitely use it whenever possible. 
+
+Terraform Registry is a repository of publicly available Terraform providers and modules. You can share yours aw well. 
+
+The instructor goes over the differences between Terraform Enterprise and Terraform Cloud. I'm not going to pay too much attention to this for now. I don't really have a reason too. 
 
 
 ## 01.05.2025
 
 **Today's Topics**
 
-* Hashicorp Certified Terraform Associate (Chapter 5 - )
+* Hashicorp Certified Terraform Associate (Chapter 5 - 8)
 
 
 Chapter 8 - Terraform CLI
 
+`terraform fmt` (format) is a command that is used for making your code readable. It helps keep your code consistent and it's safe to run at any time. Use it before pushing it to a version control. 
 
+`terraform taint` (taint) marks a resource to be destroyed and recreated. It modifies the state file. This can cause other resources dependent on it to be altered. You can use this to cause provisioners to run. 
+
+`terraform import` maps an existing resource to Terraform using an "ID". 
+
+The Terraform configuration block which controls Terraform's own behavior. You can specify a required Terraform version and provider here. 
+
+Terraform workspaces are alternate state files within the same working directory. There's always a default Terraform workspace. It can not be deleted. You can create and select a workspace by using `terraform workspace new` and `terraform workspace select`. Think of workspaces as branches in Git. You can have a main tree and a branch tree for testing. This would be the same thing for a Terraform workspace. Just think development, test and production. This is to allow you to set up Terraform versions of this. 
+
+`TF_LOG` is an environment variable for enabling verbose logging in Terraform. To get the persistent logged output, use the `TF_LOG_PATH` environment variable. They can be set to the following levels: Trace, Debug, Info, Warn, and Error.
+
+Lab 1 - Practicing Terraform CLI Commands (fmt, taint, and import)
+
+First, we cloned a GitHubt repo using `git clone <url>` and once we did that, we switched to the proper directory to get to the lab main.tf file. We cat'd the file and it was very messy. Once we did `terraform fmt`, the file looked a lot better. Then we ran init and apply. Also, I've been making use the the `--auto-approve` flag. Obviously you may not want to do this in a production environment but I think it's okay in a lab environment. Like `sudo -i`. 
+
+We then made a change to the deployed webserver's Terraform file. We just switched the index.html input to change Version 1 to Version 2. After that, we used `terraform taint <resource>` to mark it as tainted in the Terraform State File. We then searched the state file for the status which said `Tainted`.
+
+Lastly, we imported another Terraform webserver using the EC2 instance ID located in one of the files we pulled from GitHub. This added our resource to our state file and we then added the resource information to our main.tf file. 
+
+Lab 2 - Using Terraform CLI Commands (workspace and state) to Manipulate a Terraform Deployment
+
+Lets get started. First we do a `git clone` to the GitHub repo that we need. This is very easy process. I don't know why they make Git sound so complicated. But basically, we created a new workspace called `test`. We deployed our main.tf files in both workspaces and based on how the code was written, the Terraform file would deploy it in a different region based on the default and test workspaces. So once we deployed the same resources, they were just deployed in different regions. Then we destroyed everything. 
 
 ________________
 Chapter 7 - Built-In Functions and Dynamic Blocks
